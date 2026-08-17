@@ -4,4 +4,4 @@
   - Depois de publicar a API no Render, troque pelo endereço do seu serviço:
     https://SEU-SERVICO.onrender.com/api
 */
-window.TECHNOVA_API_URL = "http://localhost:3001/api";
+window.TECHNOVA_API_URL = "https://technova-api-y2dg.onrender.com/api";
