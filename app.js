@@ -419,7 +419,8 @@ function changePassword(){const current=document.getElementById("currentPassword
 function route(){const id=location.hash||"#home";document.querySelectorAll(".page").forEach(x=>x.classList.add("hidden"));if((id==="#account"||id==="#orders")&&!state.user){openLogin();go("#home");return}const page=document.querySelector(id);if(page)page.classList.remove("hidden");if(id==="#cart")renderCart();if(id==="#checkout")renderCheckout();if(id==="#account")renderAccount();if(id==="#orders")renderOrders();if(id==="#notifications")renderNotifications();if(id==="#tracking"&&state.orders[0])openTracking(state.orders[0].id);window.scrollTo(0,0)}
 window.addEventListener("hashchange",route);
 window.addEventListener("storage",()=>{state=JSON.parse(localStorage.getItem(KEY)||"null")||state;renderHeader();renderNotifications();renderOrders()});
-renderProducts();renderHeader();route();
+renderHeader();
+route();
 
 function applyAdminBanner(){
   try{
@@ -478,4 +479,6 @@ function startMarketingCountdown(){
 }
 document.addEventListener("DOMContentLoaded",startMarketingCountdown);
 
-window.addEventListener("load",()=>{loadProductsFromAPI();});
+window.addEventListener("load", async ()=>{
+    await loadProductsFromAPI();
+});
